@@ -1,0 +1,28 @@
+<!-- This should be able to show data dynamically  -->
+<div class="container" fxLayout="row" fxLayoutAlign="center none">
+    <div fxFlex="95%">
+      <mat-card>
+        <mat-card-content>
+          <h4 fxLayout="row" fxLayoutAlign="none center"><mat-icon>description</mat-icon> <span>{{filename}}</span> </h4>
+          <div class="table-container">
+            <table mat-table [dataSource]="dataSource" matSort>
+           
+              <ng-container *ngFor="let column of displayedColumns" [matColumnDef]="column">
+                  <th mat-header-cell *matHeaderCellDef>{{ column }}</th>
+                  <td mat-cell *matCellDef="let element">{{ element[column] }}</td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+              </table>
+          </div>
+            <mat-paginator 
+            [pageSizeOptions]="[100, 200, 500, 1000]"
+            (page)="onPageChange($event)"
+            showFirstLastButtons
+            aria-label="Select page of csv data">
+        </mat-paginator>
+        </mat-card-content>
+
+      </mat-card>
+    </div>
+  </div>

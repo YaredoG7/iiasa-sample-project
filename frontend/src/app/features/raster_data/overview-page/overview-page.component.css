@@ -1,0 +1,15 @@
+table {
+    width: 100%;
+  }
+
+  .raster-table {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 90vh;
+}

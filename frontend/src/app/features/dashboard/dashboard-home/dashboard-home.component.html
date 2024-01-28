@@ -1,0 +1,24 @@
+<main>
+    <div class="left-bar"></div>
+    <div id="ol-map" class="map-container"></div>
+  </main>
+  <mat-divider></mat-divider>
+  <footer>
+    <div fxLayout="row" fxLayoutAlign="center center">
+      <p>Monthly raster data</p>
+    </div>
+    <section fxLayout="row" fxLayoutAlign="center center" >
+      <mat-checkbox class="osm" (change)="showOsm($event.checked)" [checked]="showOsmData"> OSM </mat-checkbox>
+      <div *ngFor="let layer of rasterMetadata">
+        <mat-checkbox class="layer" (change)="toggleVisualize(layer.layer_name, $event.checked)">{{layer.layer_name}}</mat-checkbox>
+      </div>
+    </section>
+    <br>
+    <mat-divider></mat-divider>
+    <p></p>
+    <div class="layer-buttons" fxLayout="row" fxLayoutAlign="center center">
+      <button mat-stroked-button (click)="reloadMap()" color="primary">Reload geoserver</button>
+      <button mat-stroked-button [routerLink]="['/raster']" color="warn">Add Layer</button>
+    </div>
+    
+  </footer>

@@ -1,0 +1,44 @@
+version: "3.8"
+services:
+  iiasa_ui:
+    stdin_open: true
+    container_name: iiasa-ui
+    image: willowyared/iiasa-ui:0.1
+    ports:
+      - 3000:3000
+
+  iiasa_api:
+    stdin_open: true
+    tty: true
+    container_name: iiasa-api
+    image: willowyared/iiasa-api:0.1
+    depends_on:
+      - geoserver
+      - iiasa_ui
+    ports:
+      - 5000:5000
+    environment:
+      - GEOSERVER_URL=http://iiasa-ui:3000/geoserver/
+      - GEOSERVER_WORKSPACE=iiasa-ws
+      - GEOSERVER_USER=iiasa-admin
+      - GEOSERVER_PASSWORD=iiasageoserver
+      - MONGODB_URL=mongodb://iiasa-mongo:27017
+      - MONGODB_NAME=iiasa
+    expose:
+      - 5000
+  
+  geoserver:
+    container_name: iiasa-geoserver
+    image: kartoza/geoserver:2.24.1
+    environment:
+      - GEOSERVER_DATA_DIR=/opt/geoserver/data_dir
+      - GEOSERVER_ADMIN_USER=iiasa-admin
+      - GEOSERVER_ADMIN_PASSWORD=iiasageoserver
+  
+  mongo_db:
+    container_name: iiasa-mongo
+    image: mongo
+    ports:
+      - 27017:27017
+    volumes:
+      - ./dockerdb:/data/db

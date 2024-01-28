@@ -1,0 +1,29 @@
+
+ <mat-card class="upload-card">
+  <mat-card-content class="upload-content">
+    <h2>Upload {{context}} Files</h2>
+    <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column">
+      <div fxFlex="60%" fxFlex.sm="95%" fxFlex.xs="95%">
+        <div class="dropContainer" appDragAndDrop
+        (fileDropped)="onFileDropped($event)">
+          <div fxFlex="row" fxLayoutAlign="center"><h4 class="mat-subheading-1 accent-color"> {{dragAndDrop | lowercase }}</h4></div>
+        </div>
+      </div>
+      <div fxFlex></div>
+      <div fxFlex="50%" fxFlex.sm="95%" fxFlex.xs="950%">
+        <div class="upload-form">
+          <input type="file" (change)="onFileSelected($event)" />
+        </div>
+      </div>
+    </div>
+    <div fxLayout="column" *ngIf="progress > 0">
+      <br>
+      <mat-divider></mat-divider>
+      <mat-progress-bar  mode="determinate" [value]="progress"></mat-progress-bar>
+      <p>{{uploadState}}: {{progress}}%</p>
+    </div>
+  </mat-card-content>
+  <mat-card-actions class="button-action">
+    <button mat-raised-button color="primary" (click)="uploadFile()">Upload</button>
+  </mat-card-actions>
+</mat-card>

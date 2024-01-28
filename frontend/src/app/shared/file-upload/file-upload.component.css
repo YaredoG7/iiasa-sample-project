@@ -1,0 +1,52 @@
+.upload-card {
+    width: 70vw; /* Set the desired width of the card */
+    margin: auto; /* Center the card horizontally */
+  }
+  
+  .upload-content {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    min-height: 100px; /* Set the desired height of the content */
+  }
+
+  .accent-color {
+    color: whitesmoke;
+  }
+  .button-action {
+    display: flex;
+    flex-direction: row-reverse;
+  }
+  
+  .upload-content div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+
+  .upload-content .dropContainer {
+    border-radius: 15px;
+    left: 0;
+    height: 120px;
+    width: 90%;
+    background-color: rgba(98, 169, 211, 0.5);
+    vertical-align: middle;
+    text-align: center;
+    display: table;
+  }
+
+  .upload-content .dropContainer:hover { 
+    background-color: rgba(34, 161, 235, 0.7);
+    transition: all .5s;
+  } 
+  
+  .dragText {
+    vertical-align: middle;
+    justify-content: center;
+    display: table-cell;
+  }
+  
+  .fileover {
+    visibility: visible;
+  }

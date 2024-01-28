@@ -1,0 +1,21 @@
+
+
+table {
+    width: 100%;
+    
+  }
+
+  .table-container {
+    max-height: 70vh;
+    overflow-y: scroll;
+  }
+
+  h4 span {
+    color: rgb(32, 145, 238);
+    text-decoration: underline;
+    padding-left: 10px;
+  }
+
+  h4 mat-icon {
+    color: grey;
+  }

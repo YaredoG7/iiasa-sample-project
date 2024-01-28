@@ -1,0 +1,43 @@
+<div class="container" fxLayout="row" fxLayoutAlign="center none">
+  <div fxFlex="95%">
+    <app-file-upload [context]="uploadContext"></app-file-upload>
+  </div>
+</div>
+<br>
+<mat-divider></mat-divider>
+<br>
+<mat-card class="raster-table">
+  <mat-card-content >
+    <h4>Available Rasters: </h4>
+    <table mat-table [dataSource]="dataSource">
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef > Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.layer_name}} </td>
+      </ng-container>
+      <ng-container matColumnDef="type">
+        <th mat-header-cell *matHeaderCellDef > Type </th>
+        <td mat-cell *matCellDef="let element"> {{element.layer_info.coverageStore.type}} </td>
+      </ng-container>
+      <ng-container matColumnDef="workspace">
+        <th mat-header-cell *matHeaderCellDef > Workspace </th>
+        <td mat-cell *matCellDef="let element"> {{element.layer_info.coverageStore.workspace.name}} </td>
+      </ng-container>
+      <ng-container matColumnDef="created">
+        <th mat-header-cell *matHeaderCellDef > Uploaded on </th>
+        <td mat-cell *matCellDef="let element"> {{element.layer_info.coverageStore.dateCreated | date:'short'}} </td>
+      </ng-container>
+      <ng-container matColumnDef="view">
+        <th mat-header-cell *matHeaderCellDef > Layer </th>
+        <td mat-cell *matCellDef="let element">     
+          <a  mat-stroked-button [routerLink]="['/raster/view', element.layer_name]" routerLinkActive="active">
+            <mat-icon>map</mat-icon>
+            <span >open</span>
+          </a>
+      </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    
+  </mat-card-content>
+</mat-card>

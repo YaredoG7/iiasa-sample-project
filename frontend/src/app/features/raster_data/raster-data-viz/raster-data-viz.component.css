@@ -1,0 +1,28 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    height: 92vh;
+}
+
+
+main {
+    display: flex;
+    flex-grow: 1;
+}
+
+.map-container {
+    flex-grow: 1;
+}
+footer {
+    background-color: var(--header-color);
+    padding: 1em;
+}
+
+
+.layer , .osm {
+    padding-right: 20px;
+}
+
+.layer-buttons button {
+    margin-right: 20px;
+}
